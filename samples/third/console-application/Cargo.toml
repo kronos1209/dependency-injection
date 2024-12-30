@@ -1,0 +1,11 @@
+[package]
+name = "console-application"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = {workspace = true, features = ["derive","cargo"]}
+tokio = { workspace = true }
+anyhow = { workspace = true }
+async-trait = { workspace = true }
+uuid = { version = "1.11.0", features = ["v8"] }

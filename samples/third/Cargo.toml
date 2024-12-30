@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = ["console-application"]
+
+[workspace.dependencies]
+actix-web = {version = "4.9.0"}
+tokio = {version = "1.42.0", features = ["full"]}
+anyhow = {version = "1.0.94"}
+async-trait = { version = "0.1.83"}
+clap = { version = "4.5.23"}
