@@ -1,10 +1,10 @@
 use clap::Args;
 #[derive(Clone, Args, Debug)]
-pub struct AddUserArgs {
+pub struct CreateUserArgs {
     name: String,
 }
 
-impl AddUserArgs {
+impl CreateUserArgs {
     pub fn name(&self) -> &String {
         &self.name
     }

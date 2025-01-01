@@ -8,6 +8,12 @@ pub struct MemoryUserRepository {
     inner: Arc<Mutex<HashMap<String, User>>>,
 }
 
+impl Default for MemoryUserRepository {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl MemoryUserRepository {
     pub fn new() -> Self {
         Self {
@@ -42,7 +48,7 @@ impl UserRepository for MemoryUserRepository {
     async fn delete_user(&self, user_id: String) -> anyhow::Result<()> {
         {
             let mut guard = self.inner.lock().await;
-            if let None = guard.remove(&user_id) {
+            if guard.remove(&user_id).is_none() {
                 anyhow::bail!("not found user [user_id: {:?}]", &user_id)
             };
         }

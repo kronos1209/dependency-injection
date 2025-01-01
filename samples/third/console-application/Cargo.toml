@@ -9,3 +9,4 @@ tokio = { workspace = true }
 anyhow = { workspace = true }
 async-trait = { workspace = true }
 uuid = { version = "1.11.0", features = ["v8"] }
+sea-orm = { version = "1.1.3",features =["sqlx-all","runtime-tokio-rustls"]}

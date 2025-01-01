@@ -9,6 +9,12 @@ pub struct MemoryProductRepository {
     inner: Arc<Mutex<HashMap<String, Product>>>,
 }
 
+impl Default for MemoryProductRepository {
+    fn default() -> Self {
+        Self::new()
+    }
+}
+
 impl MemoryProductRepository {
     pub fn new() -> Self {
         Self {
@@ -43,7 +49,7 @@ impl ProductRepository for MemoryProductRepository {
     async fn delete_product(&self, product_id: String) -> anyhow::Result<()> {
         {
             let mut guard = self.inner.lock().await;
-            if let None = guard.remove(&product_id) {
+            if guard.remove(&product_id).is_none() {
                 anyhow::bail!("not found product [product_id: {:?}]", &product_id)
             };
         }

@@ -1,2 +1,2 @@
-pub mod add_product;
-pub mod add_user;
+pub mod product;
+pub mod user;
